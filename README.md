@@ -1,2 +1,4 @@
-# pexels-api
-Pexels API with python
+# Pexels API in python
+## Classes
+## Methods
+## Examples
