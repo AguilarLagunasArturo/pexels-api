@@ -1,4 +1,4 @@
-# pexels.py
+# [pexels.py](/src/pexels.py)
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
 ## Documentation:
 - [Class: page](#class-page)
@@ -7,46 +7,45 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 - [Class: photo](#class-photo)
     - [Methods](#methods-1)
     - [Properties](#properties-1)
-___
+
 ## Class: page
-#### `page(PEXELS_API_KEY)`
+#### `page(PEXELS_API_KEY)`  
+
 | Parameter     | Required |Type  | Description     |
 | :------------ | :- |:---- | :------------- |
-|PEXELS_API_KEY |Yes|String|Your pexels api key|
-###### Returns:
+|PEXELS_API_KEY |Yes|String|Your Pexels api key|
+##### Returns:
 An instance of a *page* object.
 ### Methods:
 #### `page.search()`  
-###### Description:
-Given a query requests data to pexels api v1.
+Given a query requests data to Pexels api v1.
 
 | Parameter     | Required |Type  | Description     |
 | :------------ | :- |:---- | :------------- |
 |query          |Yes|String|The topic to search|
 |photos_per_page|No|Integer|Number of photos per page 1 minimum 80 maximum|
 |page           |No|Integer|Specify the page to search|
-###### Returns:
+##### Returns:
 A dictionary containing json data of the results of the query in the specified page, `None` if the request fails.  
-#### `page.popular()`
-###### Description:
-Requests popular data from pexels api v1.
+
+#### `page.popular()`  
+Requests popular data from Pexels api v1.
 
 | Parameter     | Required |Type  | Description     |
 | :------------ | :- |:---- | :------------- |
 |photos_per_page|No|Integer|Number of photos per page 1 minimum 80 maximum|
 |page           |No|Integer|Specify the page to search|
-###### Returns:
-A dictionary containing json data of the results of pexels' popular page in the specified page, `None` if the request fails.  
-#### `page.curated()`
-###### Description:
-Requests curated data from pexels api v1.
+##### Returns:
+A dictionary containing json data of the results of Pexels' popular page in the specified page, `None` if the request fails.  
+#### `page.curated()`  
+Requests curated data from Pexels api v1.
 
 | Parameter     | Required |Type  | Description     |
 | :------------ | :- |:---- | :------------- |
 |photos_per_page|No|Integer|Number of photos per page 1 minimum 80 maximum|
 |page           |No|Integer|Specify the page to search|
-###### Returns:
-A dictionary containing json data of the results of pexels' curated page in the specified page, `None` if the request fails.  
+##### Returns:
+A dictionary containing json data of the results of Pexels' curated page in the specified page, `None` if the request fails.  
 ### Properties:
 - #### page.request:
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -74,7 +73,7 @@ ___
 | :------------ | :- |:---- | :------------- |
 |json_photo |Yes|Dictionary|A dictionary containing json data of the photo of which you want the properties|
 
-###### Returns:
+##### Returns:
 An instance of a *photo* object.
 
 ### Properties:
