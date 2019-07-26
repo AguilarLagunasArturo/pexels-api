@@ -3,9 +3,9 @@
 # Date:             17/07/2019
 # You can:
     # Get json data from https://www.pexels.com
-    # Search photos using pexels API v1
-    # Search popular photos using pexels API v1
-    # Search curated photos using pexels API v1
+    # Search photos using Pexels API v1
+    # Search popular photos using Pexels API v1
+    # Search curated photos using Pexels API v1
 # Dependencies:
     # requests
 # Pexels API usage:
@@ -16,7 +16,7 @@
         # per_page	Defines the number of results per page. (optional, default: 15, max: 80)
         # page		Defines the number of the page. (optional, default: 1)
 import requests
-class pexels_api:
+class page:
     def __init__(self, PEXELS_API_KEY):
         self.PEXELS_AUTHORIZATION = {"Authorization":PEXELS_API_KEY}
         self.request = None
@@ -48,7 +48,7 @@ class pexels_api:
         # If there is no json data return None
         return None if not self.request else self.json
     """ Returns json of the next page if available """
-    def search_next_page(self):
+    def search_next(self):
         if self.has_next:
             self.__request(self.next_page)
         else:
@@ -56,7 +56,7 @@ class pexels_api:
         # If there is no json data return None
         return None if not self.request else self.json
     """ Returns json of the previous page if available """
-    def search_previous_page(self):
+    def search_previous(self):
         if self.has_prev:
             self.__request(self.prev_page)
         else:
@@ -64,11 +64,11 @@ class pexels_api:
         # If there is no json data return None
         return None if not self.request else self.json
 
-    """ Returns a list of photo properties for each photo in the current page """
+    """ Returns a list of photo objects """
     def get_entries(self):
         if not self.json:
             return None
-        return [photo_properties(photo) for photo in self.json["photos"]]
+        return [photo(json_photo) for json_photo in self.json["photos"]]
 
     """ Private methods """
     def __request(self, url):
@@ -115,7 +115,7 @@ class pexels_api:
             exit()
 
 """ Subclass """
-class photo_properties:
+class photo:
     def __init__(self, json_photo):
         self.__photo = json_photo
     @property
@@ -137,35 +137,32 @@ class photo_properties:
     def description(self):
         return self.url.split("/")[-2].replace("-{}".format(self.id), "")
     @property
-    def src(self):
-        return self.__photo["src"]
-    @property
     def original(self):
-        return self.src["original"]
+        return self.__photo["src"]["original"]
     @property
     def compressed(self):
         return self.original + "?auto=compress"
     @property
     def large2x(self):
-        return self.src["large2x"]
+        return self.__photo["src"]["large2x"]
     @property
     def large(self):
-        return self.src["large"]
+        return self.__photo["src"]["large"]
     @property
     def medium(self):
-        return self.src["medium"]
+        return self.__photo["src"]["medium"]
     @property
     def small(self):
-        return self.src["small"]
+        return self.__photo["src"]["small"]
     @property
     def portrait(self):
-        return self.src["portrait"]
+        return self.__photo["src"]["portrait"]
     @property
     def landscape(self):
-        return self.src["landscape"]
+        return self.__photo["src"]["landscape"]
     @property
     def tiny(self):
-        return self.src["tiny"]
+        return self.__photo["src"]["tiny"]
     @property
     def extension(self):
         return self.original.split(".")[-1]

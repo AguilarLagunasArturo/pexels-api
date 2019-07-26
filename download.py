@@ -1,7 +1,7 @@
 # Author:   Arturo Aguilar Lagunas
 # Date:     17/07/2019
 # Purpose:
-    # Download photos from pexels
+    # Download photos from Pexels
 # Usage:
 # python download.py [-o] [query] [images] [path]
     # Description:
@@ -187,6 +187,3 @@ while True:
             break
     if break_loop: break
     if not pexels.search_next_page(): break
-
-# TODO:
-    # [ ] n random photos
