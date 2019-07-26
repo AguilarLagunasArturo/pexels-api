@@ -1,4 +1,13 @@
-# pexels.py  
+# pexels.py
+## Project description:
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
+## Documentation:
+- [Class: page](#class-page)
+    - [Methods](#methods)
+    - [Properties](#properties)
+- [Class: photo](#class-photo)
+    - [Methods](#methods-1)
+    - [Properties](#properties-1)
 ___
 ## Class: page
 #### `page(PEXELS_API_KEY)`
@@ -104,13 +113,3 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.  
 - #### photo.extension:
 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-[0]: #pexels.py "Index"
-[1]: #class-page "Index"
-[2]: #class-photo "Index"
-[3]: https://markdown-guide.readthedocs.io/en/latest/basics.html#links-reference "Index"
-
-[Index][0]  
-[Index][1]  
-[Index][2]  
-[Index][3]  
