@@ -2,21 +2,22 @@
 # Pexels Website:   https://www.pexels.com
 # Date:             17/07/2019
 # You can:
-    # Get json data from https://www.pexels.com
-    # Search photos using Pexels API v1
-    # Search popular photos using Pexels API v1
-    # Search curated photos using Pexels API v1
+#     Get json data from https://www.pexels.com
+#     Search photos using Pexels API v1
+#     Search popular photos using Pexels API v1
+#     Search curated photos using Pexels API v1
 # Dependencies:
-    # requests
+#     requests
 # Pexels API usage:
-    # To get access you have to add a HTTP Authorization header to each of your requests. (required)
-    # Authorization: YOUR_API_KEY
-    # Search: https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1
-        # query		Get photos related to this query. (required)
-        # per_page	Defines the number of results per page. (optional, default: 15, max: 80)
-        # page		Defines the number of the page. (optional, default: 1)
+#     To get access you have to add a HTTP Authorization header to each of your requests. (required)
+#     Authorization: YOUR_API_KEY
+#     Search: https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1
+#         query		Get photos related to this query. (required)
+#         per_page	Defines the number of results per page. (optional, default: 15, max: 80)
+#         page		Defines the number of the page. (optional, default: 1)
 import requests
-class page:
+""" Class """
+class Page:
     def __init__(self, PEXELS_API_KEY):
         self.PEXELS_AUTHORIZATION = {"Authorization":PEXELS_API_KEY}
         self.request = None
@@ -68,7 +69,7 @@ class page:
     def get_entries(self):
         if not self.json:
             return None
-        return [photo(json_photo) for json_photo in self.json["photos"]]
+        return [Photo(json_photo) for json_photo in self.json["photos"]]
 
     """ Private methods """
     def __request(self, url):
@@ -114,8 +115,8 @@ class page:
             self.request = None
             exit()
 
-""" Subclass """
-class photo:
+""" Class """
+class Photo:
     def __init__(self, json_photo):
         self.__photo = json_photo
     @property

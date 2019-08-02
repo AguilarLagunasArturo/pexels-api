@@ -36,7 +36,7 @@ Creates an instance of a *[page][7]* object.
 An instance of a *[page][7]* object.
 ### Methods:
 #### `page.search(query, photos_per_page=15, page=1)`  
-Given a query requests data to Pexels API v1.
+Given a query requests data using Pexels API v1.
 
 | Parameter     | Required |Type  | Description     |
 | :------------ | :- |:---- | :------------- |
@@ -47,23 +47,23 @@ Given a query requests data to Pexels API v1.
 A dictionary containing json data of the results of the query in the specified page, `None` if the request fails.  
 
 #### `page.popular(photos_per_page=15, page=1)`  
-Requests popular data from Pexels API v1.
+Requests popular data using Pexels API v1.
 
 | Parameter     | Required |Type  | Description     |
 | :------------ | :- |:---- | :------------- |
 |photos_per_page|No|Integer|Number of photos per page 1 minimum 80 maximum|
 |page           |No|Integer|Specify the page to search|
 ##### Returns:
-A dictionary containing json data of the results of Pexels' popular page in the specified page, `None` if the request fails.  
+A dictionary containing json data of the results of Pexels popular page in the specified page, `None` if the request fails.  
 #### `page.curated(photos_per_page=15, page=1)`  
-Requests curated data from Pexels API v1.
+Requests curated data using Pexels API v1.
 
 | Parameter     | Required |Type  | Description     |
 | :------------ | :- |:---- | :------------- |
 |photos_per_page|No|Integer|Number of photos per page 1 minimum 80 maximum|
 |page           |No|Integer|Specify the page to search|
 ##### Returns:
-A dictionary containing json data of the results of Pexels' curated page in the specified page, `None` if the request fails.  
+A dictionary containing json data of the results of Pexels curated page in the specified page, `None` if the request fails.  
 #### `page.search_next()`
 Search the next page if available.  
 ##### Returns:
@@ -79,7 +79,7 @@ A list of *[photo][10]* objects.
 ### Properties:
 By default the *[page][7]* properties are `None`. When *[page.seacrh()][13]*, *[page.popular()][14]*, *[page.curated()][15]* is performed the *[page][7]* properties are updated.
 - #### page.request:
-A *[requests][0]* object.  
+A *[requests][1]* object.  
 *__Note:__*  `None` if request fails.
 - #### page.json:
 A dictionary with the data of the current page.  
@@ -143,7 +143,7 @@ String, containing photo's landscape size url.
 - #### photo.tiny:
 String, containing photo's tiny size url.
 - #### photo.extension:
-String, containing photo's extension.
+String, containing photo extension.
 
 <!-- References -->
 [0]: https://pexels.com                         "Pexels website"
@@ -161,8 +161,8 @@ String, containing photo's extension.
 [11]: #methods-1                               "photo methods"
 [12]: #properties-1                            "photo properties"
 [13]: #pagesearchquery-photos_per_page15-page1 "page: search method"
-[14]: #popular-results_per_page15-page1        "page: popular method"
-[15]: #curatedresults_per_page=15-page1        "page: curated method"
+[14]: #pagepopularresults_per_page15-page1     "page: popular method"
+[15]: #pagecuratedresults_per_page=15-page1    "page: curated method"
 [16]: #searchnext                              "page: search_next method"
 [17]: #searchprevious                          "page: search_previous method"
 [18]: #getentries                              "page: get_entries method"

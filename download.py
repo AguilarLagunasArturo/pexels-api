@@ -1,21 +1,21 @@
 # Author:   Arturo Aguilar Lagunas
 # Date:     17/07/2019
 # Purpose:
-    # Download photos from Pexels
+#     Download photos from Pexels
 # Usage:
 # python download.py [-o] [query] [images] [path]
-    # Description:
-        # Download images from https://www.pexels.com
-    # Arguments:
-        # Required:
-            # query:  A string with the topic of the search
-            # images: The number of images you wish to download
-            # path:   The path in which the images will be downloaded, current path assumed if not given
-        # Options:
-            # -o:     The downloaded images will be organized by photographer path/query/photographer/filename with description-id as filename
-        # By default the images will be downloaded in path/query/filename and they will be enumerated.
+#     Description:
+#         Download images from https://www.pexels.com
+#     Arguments:
+#         Required:
+#             query:  A string with the topic of the search
+#             images: The number of images you wish to download
+#             path:   The path in which the images will be downloaded, current path assumed if not given
+#         Options:
+#             -o:     The downloaded images will be organized by photographer path/query/photographer/filename with description-id as filename
+#         By default the images will be downloaded in path/query/filename and they will be enumerated.
 
-from src.pexels import pexels_api
+from src.pexels import Page
 import requests
 import sys
 import os
@@ -101,18 +101,18 @@ if len(required_args) == 3:
         print("{}: Must be a directory".format(required_args[2]))
         print(usage)
         exit()
-# Create pexels_api object
-pexels = pexels_api(os.environ.get("PEXELS_API_KEY"))
+# Create page object
+page = Page(os.environ.get("PEXELS_API_KEY"))
 # Search photos
 print("Searching:\t{}".format(query))
 per_page = total_photos if total_photos < 80 else 80
-pexels.search(query, per_page)
-print("Total results: {}".format(pexels.total_results))
+page.search(query, per_page)
+print("Total results: {}".format(page.total_results))
 # Check if there are photos
-if not pexels.json["photos"]: exit()
+if not page.json["photos"]: exit()
 # If there aren't enough photos assign new total_photos
-if total_photos > pexels.total_results:
-    total_photos = pexels.total_results
+if total_photos > page.total_results:
+    total_photos = page.total_results
     print("There is only {} photos about '{}'".format(total_photos, query))
 # Create directory if does not exists
 path = os.path.join(path, query.replace(" ", "-"))
@@ -124,7 +124,7 @@ photos = 0
 download_url = ""
 break_loop = False
 while True:
-    for photo in pexels.get_entries():
+    for photo in page.get_entries():
         photos = photos + 1
         filename = str(photos).zfill(len(str(total_photos)))
         if options["-d"]:
@@ -186,4 +186,4 @@ while True:
             break_loop = True
             break
     if break_loop: break
-    if not pexels.search_next_page(): break
+    if not page.search_next_page(): break
