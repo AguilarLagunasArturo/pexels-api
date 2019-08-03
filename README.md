@@ -1,5 +1,13 @@
 # Using Pexels API v1
 Use *[pexels_api][2]* to search photos from [Pexels][0].
+## Prerequisites:
+- python
+    - pip
+    - requests
+
+## Installation:
+`pip install pexels-api`
+
 ## Examples:
 - *[search.py:][3]*  
 Specify a query to search photos.
@@ -10,13 +18,6 @@ Search curated photos.
 - *[download.py:][6]*  
 Download large amounts of photos with a query.
 
-## Prerequisites:
-- python
-    - pip
-    - requests
-
-## Installation:
-`pip install pexels_api`
 ## Documentation:
 - [Class: API][7]
     - [Methods][8]
@@ -120,7 +121,7 @@ An instance of a *[Photo][10]* object.
 
 <!-- References -->
 [0]: https://pexels.com                        "Pexels website"
-[1]: https://2.python-requests.org/en/master/  "requests documentation"
+[1]: https://2.python-requests.org/en/master/  "Documentation: requests"
 <!-- Documentation -->
 [2]: /pexels_api                               "pexels_api package"
 [3]: /search.py                                "Using pexels_api to search photos"
@@ -132,6 +133,6 @@ An instance of a *[Photo][10]* object.
 [9]: #properties                               "API: properties"
 [10]: #class-photo                             "Class: Photo"
 [11]: #properties-1                            "Photo: properties"
-[12]: #searchquery-photos_per_page15-page1     "API: search method"
-[13]: #popularphotos_per_page15-page1          "API: popular method"
-[14]: #curatedphotos_per_page15-page1          "API: curated method"
+[12]: #searchquery-photos_per_page15-page1     "API method: search"
+[13]: #popularphotos_per_page15-page1          "API method: popular"
+[14]: #curatedphotos_per_page15-page1          "API method: curated"
