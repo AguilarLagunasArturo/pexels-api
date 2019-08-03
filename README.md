@@ -7,7 +7,7 @@ Use *[pexels_api][2]* to search photos from [Pexels][0].
 `pip install pexels-api`
 
 ## Usage:
-The following code shows you how to import the package and make a simple query to Pexels API v1.
+The following code shows you how to import the package and make a simple query to Pexels API v1. See more [examples][15] or the [documentation][16].
 ```python
 # Import pexels_api package
 from pexels_api import API
@@ -21,9 +21,12 @@ api.search('engineer', page=1, results_per_page=5)
 photos = api.get_entries()
 # Loop the five photos
 for photo in photos:
-  print("Photographer: {}".format(api.photographer))
-  print("Photo url: {}".format(api.url))
-  print("Photo original size: {}".format(api.original))
+  # Print photographer
+  print("Photographer: {}".format(photo.photographer))
+  # Print url
+  print("Photo url: {}".format(photo.url))
+  # Print original size url
+  print("Photo original size: {}".format(photo.original))
 ```
 ## Examples:
 - *[search.py:][3]*  
@@ -154,3 +157,5 @@ An instance of a *[Photo][10]* object.
 [12]: #searchquery-photos_per_page15-page1     "API method: search"
 [13]: #popularphotos_per_page15-page1          "API method: popular"
 [14]: #curatedphotos_per_page15-page1          "API method: curated"
+[15]: #examples          "More pexels_api examples"
+[16]: #documentation          "pexels_api documentation"
