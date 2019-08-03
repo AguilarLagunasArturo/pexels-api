@@ -3,7 +3,7 @@ Use *[pexels_api][2]* to search photos from [Pexels][0].
 ## Examples:
 - *[search.py:][3]*  
 Specify a query to search photos.
-- *[pupular.py:][4]*  
+- *[popular.py:][4]*  
 Search popular photos.
 - *[curated.py:][5]*  
 Search curated photos.
@@ -29,8 +29,8 @@ Download large amounts of photos with a query.
 #### `API(PEXELS_API_KEY)`  
 Creates an instance of a *[API][7]* object.
 
-| Parameter     | Required |Type  | Description     |
-| :------------ | :- |:---- | :------------- |
+|Parameter|Required|Type|Description|
+|:-|:-|:-|:-|
 |PEXELS_API_KEY |Yes|String|Your Pexels API key|
 ##### Returns:
 An instance of a *[API][7]* object.
@@ -38,8 +38,8 @@ An instance of a *[API][7]* object.
 #### `search(query, photos_per_page=15, page=1)`  
 Given a query requests data using Pexels API v1.
 
-| Parameter     | Required |Type  | Description     |
-| :------------ | :- |:---- | :------------- |
+|Parameter|Required|Type|Description|
+|:-|:-|:-|:-|
 |query          |Yes|String|The topic to search|
 |photos_per_page|No. *(Default value: 15)*|Integer|Number of photos per page 1 minimum 80 maximum|
 |page           |No. *(Default value: 1)*|Integer|Specify the page to search|
@@ -49,8 +49,8 @@ A dictionary containing json data of the results of the query in the specified p
 #### `popular(photos_per_page=15, page=1)`  
 Requests popular data using Pexels API v1.
 
-| Parameter     | Required |Type  | Description     |
-| :------------ | :- |:---- | :------------- |
+|Parameter|Required|Type|Description|
+|:-|:-|:-|:-|
 |photos_per_page|No. *(Default value: 15)*|Integer|Number of photos per page 1 minimum 80 maximum|
 |page           |No. *(Default value: 1)*|Integer|Specify the page to search|
 ##### Returns:
@@ -58,8 +58,8 @@ A dictionary containing json data of the results of Pexels popular page in the s
 #### `curated(photos_per_page=15, page=1)`  
 Requests curated data using Pexels API v1.
 
-| Parameter     | Required |Type  | Description     |
-| :------------ | :- |:---- | :------------- |
+|Parameter|Required|Type|Description|
+|:-|:-|:-|:-|
 |photos_per_page|No. *(Default value: 15)*|Integer|Number of photos per page 1 minimum 80 maximum|
 |page           |No. *(Default value: 1)*|Integer|Specify the page to search|
 ##### Returns:
@@ -77,10 +77,10 @@ Creates an instance of a *[Photo][10]* object for each photo in the current page
 ##### Returns:
 A list of *[Photo][10]* objects.
 ### Properties:
-By default the *[API][7]* properties are `None`. When *[seacrh()][13]*, *[popular()][14]* or *[curated()][15]* is performed the *[API][7]* properties are updated.
+By default the *[API][7]* properties are `None`. When *[seacrh()][13]*, *[popular()][14]* or *[curated()][15]* is performed the *[API][7]* properties are updated.  
 
 |Property|Type|Description|
-|:-|:-||
+|:-|:-|:-|
 |request|*[requests][1]* object|`None` if request fails|
 |json|Dictionary|A dictionary with the data of the current page|  
 |page|Integer|Number of the page|  
@@ -123,20 +123,20 @@ An instance of a *[Photo][10]* object.
 [0]: https://pexels.com                        "Pexels website"
 [1]: https://2.python-requests.org/en/master/  "requests documentation"
 <!-- Documentation -->
-[2]: /src/pexels.py                            "pexels.py"
-[3]: /search.py                                "Using pexels.py to search photos"
-[4]: /pupular.py                               "Using pexels.py to search popular photos"
-[5]: /curated.py                               "Using pexels.py to search curated photos"
-[6]: /download.py                              "Using pexels.py to download large amounts of photos"
-[7]: #class-api                                "Class page"
-[8]: #methods                                  "page methods"
-[9]: #properties                               "page properties"
-[10]: #class-photo                             "Class photo"
-[11]: #methods-1                               "photo methods"
-[12]: #properties-1                            "photo properties"
-[13]: #apisearchquery-photos_per_page15-page1  "page: search method"
-[14]: #apipopularresults_per_page15-page1      "page: popular method"
-[15]: #apicuratedresults_per_page=15-page1     "page: curated method"
-[16]: #searchnextpage                          "page: search_next_page method"
-[17]: #searchpreviouspage                      "page: search_previous_page method"
-[18]: #getentries                              "page: get_entries method"
+[2]: /pexels_api                               "pexels_api"
+[3]: /search.py                                "Using pexels_api to search photos"
+[4]: /popular.py                               "Using pexels_api to search popular photos"
+[5]: /curated.py                               "Using pexels_api to search curated photos"
+[6]: /download.py                              "Using pexels_api to download large amounts of photos"
+[7]: #class-api                                "Class API"
+[8]: #methods                                  "API methods"
+[9]: #properties                               "API properties"
+[10]: #class-photo                             "Class Photo"
+[11]: #methods-1                               "Photo methods"
+[12]: #properties-1                            "Photo properties"
+[13]: #searchquery-photos_per_page15-page1     "API: search method"
+[14]: #popularresults_per_page15-page1         "API: popular method"
+[15]: ##curatedphotos_per_page15-page1         "API: curated method"
+[16]: #search_next_page                        "API: search_next_page method"
+[17]: #search_previous_page                    "API: search_previous_page method"
+[18]: #get_entries                             "API: get_entries method"
