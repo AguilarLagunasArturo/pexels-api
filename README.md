@@ -22,8 +22,7 @@ Download large amounts of photos with a query.
     - [Methods][8]
     - [Properties][9]
 - [Class: Photo][10]
-    - [Methods][11]
-    - [Properties][12]
+    - [Properties][11]
 
 ## Class: API
 #### `API(PEXELS_API_KEY)`  
@@ -77,7 +76,7 @@ Creates an instance of a *[Photo][10]* object for each photo in the current page
 ##### Returns:
 A list of *[Photo][10]* objects.
 ### Properties:
-By default the *[API][7]* properties are `None`. When *[seacrh()][13]*, *[popular()][14]* or *[curated()][15]* is performed the *[API][7]* properties are updated.  
+By default the *[API][7]* properties are `None`. When *[seacrh()][12]*, *[popular()][13]* or *[curated()][14]* is performed the *[API][7]* properties are updated.  
 
 |Property|Type|Description|
 |:-|:-|:-|
@@ -123,20 +122,16 @@ An instance of a *[Photo][10]* object.
 [0]: https://pexels.com                        "Pexels website"
 [1]: https://2.python-requests.org/en/master/  "requests documentation"
 <!-- Documentation -->
-[2]: /pexels_api                               "pexels_api"
+[2]: /pexels_api                               "pexels_api package"
 [3]: /search.py                                "Using pexels_api to search photos"
 [4]: /popular.py                               "Using pexels_api to search popular photos"
 [5]: /curated.py                               "Using pexels_api to search curated photos"
 [6]: /download.py                              "Using pexels_api to download large amounts of photos"
-[7]: #class-api                                "Class API"
-[8]: #methods                                  "API methods"
-[9]: #properties                               "API properties"
-[10]: #class-photo                             "Class Photo"
-[11]: #methods-1                               "Photo methods"
-[12]: #properties-1                            "Photo properties"
-[13]: #searchquery-photos_per_page15-page1     "API: search method"
-[14]: #popularresults_per_page15-page1         "API: popular method"
-[15]: ##curatedphotos_per_page15-page1         "API: curated method"
-[16]: #search_next_page                        "API: search_next_page method"
-[17]: #search_previous_page                    "API: search_previous_page method"
-[18]: #get_entries                             "API: get_entries method"
+[7]: #class-api                                "Class: API"
+[8]: #methods                                  "API: methods"
+[9]: #properties                               "API: properties"
+[10]: #class-photo                             "Class: Photo"
+[11]: #properties-1                            "Photo: properties"
+[12]: #searchquery-photos_per_page15-page1     "API: search method"
+[13]: #popularphotos_per_page15-page1          "API: popular method"
+[14]: #curatedphotos_per_page15-page1          "API: curated method"
