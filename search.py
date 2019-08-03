@@ -1,15 +1,15 @@
-from src.pexels import page
+from pexels_api import API
 import os
-# Init page object with your Pexels API key
+# Init api object with your Pexels API key
 API_KEY = os.environ.get("PEXELS_API_KEY")
-pexels_page = page(API_KEY)
+api = API(API_KEY)
 # Search 'koala' photos
-pexels_page.search("koala")
-print("Total results: {}".format(pexels_page.total_results))
+api.search("koala")
+print("Total results: {}".format(api.total_results))
 # Loop all the pages
 while True:
     # Get all photos in the page
-    photos = pexels_page.get_entries()
+    photos = api.get_entries()
     # For each photo print its properties
     for photo in photos:
         print("-----------------------------------------------")
@@ -30,7 +30,9 @@ while True:
         print("\ttiny: {}".format(photo.tiny))
         print("\tportrait: {}".format(photo.portrait))
         print("\tlandscape: {}".format(photo.landscape))
-    # Search next page. If there is no next page print the last page and end the loop
-    if not pexels_page.search_next():
-        print("Last page: {}".format(pexels_page.page))
+    # If there is no next page print the last page and end the loop
+    if not api.has_next_page:
+        print("Last page: {}".format(api.page))
         break
+    # Search next page
+    api.search_next_page()

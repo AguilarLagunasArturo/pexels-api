@@ -1,23 +1,16 @@
 # Author:           Arturo Aguilar Lagunas
 # Pexels Website:   https://www.pexels.com
-# Date:             17/07/2019
-# You can:
+# class information:
 #     Get json data from https://www.pexels.com
 #     Search photos using Pexels API v1
 #     Search popular photos using Pexels API v1
 #     Search curated photos using Pexels API v1
 # Dependencies:
 #     requests
-# Pexels API usage:
-#     To get access you have to add a HTTP Authorization header to each of your requests. (required)
-#     Authorization: YOUR_API_KEY
-#     Search: https://api.pexels.com/v1/search?query=example+query&per_page=15&page=1
-#         query		Get photos related to this query. (required)
-#         per_page	Defines the number of results per page. (optional, default: 15, max: 80)
-#         page		Defines the number of the page. (optional, default: 1)
 import requests
+from .tools import Photo
 """ Class """
-class Page:
+class API:
     def __init__(self, PEXELS_API_KEY):
         self.PEXELS_AUTHORIZATION = {"Authorization":PEXELS_API_KEY}
         self.request = None
@@ -25,8 +18,8 @@ class Page:
         self.page = None
         self.total_results = None
         self.page_results = None
-        self.has_next = None
-        self.has_prev = None
+        self.has_next_page_page = None
+        self.has_previous_page = None
         self.next_page = None
         self.prev_page = None
     """ Returns json for the given query """
@@ -49,16 +42,16 @@ class Page:
         # If there is no json data return None
         return None if not self.request else self.json
     """ Returns json of the next page if available """
-    def search_next(self):
-        if self.has_next:
+    def search_next_page(self):
+        if self.has_next_page:
             self.__request(self.next_page)
         else:
             return None
         # If there is no json data return None
         return None if not self.request else self.json
     """ Returns json of the previous page if available """
-    def search_previous(self):
-        if self.has_prev:
+    def search_previous_page(self):
+        if self.has_previous_page:
             self.__request(self.prev_page)
         else:
             return None
@@ -98,72 +91,19 @@ class Page:
                 self.page_results = None
             try:
                 self.next_page = self.json["next_page"]
-                self.has_next = True
+                self.has_next_page = True
             except:
                 self.next_page = None
-                self.has_next = False
+                self.has_next_page = False
             try:
                 self.prev_page = self.json["prev_page"]
-                self.has_prev = True
+                self.has_previous_page = True
             except:
                 self.prev_page = None
-                self.has_prev = False
+                self.has_previous_page = False
         else:
             print("Wrong response you might have a wrong API key")
             print(self.request)
             print("API key: {}".format(self.PEXELS_AUTHORIZATION))
             self.request = None
             exit()
-
-""" Class """
-class Photo:
-    def __init__(self, json_photo):
-        self.__photo = json_photo
-    @property
-    def id(self):
-        return int(self.__photo["id"])
-    @property
-    def width(self):
-        return int(self.__photo["width"])
-    @property
-    def height(self):
-        return int(self.__photo["height"])
-    @property
-    def photographer(self):
-        return self.__photo["photographer"]
-    @property
-    def url(self):
-        return self.__photo["url"]
-    @property
-    def description(self):
-        return self.url.split("/")[-2].replace("-{}".format(self.id), "")
-    @property
-    def original(self):
-        return self.__photo["src"]["original"]
-    @property
-    def compressed(self):
-        return self.original + "?auto=compress"
-    @property
-    def large2x(self):
-        return self.__photo["src"]["large2x"]
-    @property
-    def large(self):
-        return self.__photo["src"]["large"]
-    @property
-    def medium(self):
-        return self.__photo["src"]["medium"]
-    @property
-    def small(self):
-        return self.__photo["src"]["small"]
-    @property
-    def portrait(self):
-        return self.__photo["src"]["portrait"]
-    @property
-    def landscape(self):
-        return self.__photo["src"]["landscape"]
-    @property
-    def tiny(self):
-        return self.__photo["src"]["tiny"]
-    @property
-    def extension(self):
-        return self.original.split(".")[-1]

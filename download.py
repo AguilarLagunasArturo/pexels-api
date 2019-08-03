@@ -1,21 +1,6 @@
 # Author:   Arturo Aguilar Lagunas
-# Date:     17/07/2019
-# Purpose:
-#     Download photos from Pexels
-# Usage:
-# python download.py [-o] [query] [images] [path]
-#     Description:
-#         Download images from https://www.pexels.com
-#     Arguments:
-#         Required:
-#             query:  A string with the topic of the search
-#             images: The number of images you wish to download
-#             path:   The path in which the images will be downloaded, current path assumed if not given
-#         Options:
-#             -o:     The downloaded images will be organized by photographer path/query/photographer/filename with description-id as filename
-#         By default the images will be downloaded in path/query/filename and they will be enumerated.
-
-from src.pexels import Page
+# Purpose:  Download photos from https://www.pexels.com/
+from pexels_api import API
 import requests
 import sys
 import os
@@ -38,10 +23,10 @@ long_usage = usage + """
             -i:     Photos will have their pexels id in their filename
             -p:     Photos will have their photographer in their filename
             -o:     Photos will be organized by photographer path/query/photographer/filename with description-pexels-id as filename
-            -c:     Download compressed size photos, they have the aspect ratio of the original photo
-            -l:     Download large size photos the have a maximum width of 1880px and a maximum height of 1300px, they have the aspect ratio of the original photo
-            -m:     Download medium size photos the have a height of 350px and a flexible width, they have the aspect ratio of the original photo
-            -s:     Download small size photos	This image has a height of 130px and a flexible width, they have the aspect ratio of the original photo
+            -c:     Download compressed size photos, original aspect ratio
+            -l:     Download large size photos, maximum width of 1880px and a maximum height of 1300px, original aspect ratio
+            -m:     Download medium size photos, maximum height of 350px and a flexible width, original aspect ratio
+            -s:     Download small size photos, maximum height of 130px and a flexible width, original aspect ratio
     By default the photos will be downloaded with the original size in path/query/filename and they will be enumerated.
     You can only choose one size for the photos."""
 args = sys.argv[1:]
@@ -101,30 +86,30 @@ if len(required_args) == 3:
         print("{}: Must be a directory".format(required_args[2]))
         print(usage)
         exit()
-# Create page object
-page = Page(os.environ.get("PEXELS_API_KEY"))
+# Create api object
+api = API(os.environ.get("PEXELS_API_KEY"))
 # Search photos
 print("Searching:\t{}".format(query))
 per_page = total_photos if total_photos < 80 else 80
-page.search(query, per_page)
-print("Total results: {}".format(page.total_results))
+api.search(query, per_page)
+print("Total results: {}".format(api.total_results))
 # Check if there are photos
-if not page.json["photos"]: exit()
+if not api.json["photos"]: exit()
 # If there aren't enough photos assign new total_photos
-if total_photos > page.total_results:
-    total_photos = page.total_results
+if total_photos > api.total_results:
+    total_photos = api.total_results
     print("There is only {} photos about '{}'".format(total_photos, query))
 # Create directory if does not exists
 path = os.path.join(path, query.replace(" ", "-"))
 if not os.path.isdir(path):
     os.mkdir(path)
 print("Writing to {}".format(path))
-# Download photos
+# Get photos
 photos = 0
 download_url = ""
 break_loop = False
 while True:
-    for photo in page.get_entries():
+    for photo in api.get_entries():
         photos = photos + 1
         filename = str(photos).zfill(len(str(total_photos)))
         if options["-d"]:
@@ -186,4 +171,4 @@ while True:
             break_loop = True
             break
     if break_loop: break
-    if not page.search_next_page(): break
+    if not api.search_next_page(): break
