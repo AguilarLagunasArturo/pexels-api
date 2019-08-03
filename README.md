@@ -1,13 +1,30 @@
 # Using Pexels API v1
 Use *[pexels_api][2]* to search photos from [Pexels][0].
-## Prerequisites:
-- python
-    - pip
-    - requests
+## Dependencies:
+- requests
 
 ## Installation:
 `pip install pexels-api`
 
+## Usage:
+The following code shows you how to import the package and make a simple query to Pexels API v1.
+```python
+# Import pexels_api package
+from pexels_api import API
+# Type your Pexels API
+PEXELS_API_KEY = ''
+# Create API object
+api = API(PEXELS_API_KEY)
+# Search five images
+api.search('engineer', page=1, results_per_page=5)
+# Get photo entries
+photos = api.get_entries()
+# Loop the five photos
+for photo in photos:
+  print("Photographer: {}".format(api.photographer))
+  print("Photo url: {}".format(api.url))
+  print("Photo original size: {}".format(api.original))
+```
 ## Examples:
 - *[search.py:][3]*  
 Specify a query to search photos.
@@ -19,6 +36,7 @@ Search curated photos.
 Download large amounts of photos with a query.
 
 ## Documentation:
+- [Usage: pexels_api][7]
 - [Class: API][7]
     - [Methods][8]
     - [Properties][9]
@@ -124,10 +142,10 @@ An instance of a *[Photo][10]* object.
 [1]: https://2.python-requests.org/en/master/  "Documentation: requests"
 <!-- Documentation -->
 [2]: /pexels_api                               "pexels_api package"
-[3]: /search.py                                "Using pexels_api to search photos"
-[4]: /popular.py                               "Using pexels_api to search popular photos"
-[5]: /curated.py                               "Using pexels_api to search curated photos"
-[6]: /download.py                              "Using pexels_api to download large amounts of photos"
+[3]: /examples/search.py                                "Using pexels_api to search photos"
+[4]: /examples/popular.py                               "Using pexels_api to search popular photos"
+[5]: /examples/curated.py                               "Using pexels_api to search curated photos"
+[6]: /examples/download.py                              "Using pexels_api to download large amounts of photos"
 [7]: #class-api                                "Class: API"
 [8]: #methods                                  "API: methods"
 [9]: #properties                               "API: properties"
