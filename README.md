@@ -102,7 +102,7 @@ By default the *[API][7]* properties are `None`. When *[seacrh()][12]*, *[popula
 
 |Property|Type|Description|
 |:-|:-|:-|
-|request|Object: [requests][1]|`None` if request fails|
+|request|[requests][1] object|Current request, `None` if request fails|
 |json|Dictionary|A dictionary with the data of the current page|  
 |page|Integer|Number of the page|  
 |total_results|Integer|Number of total results. (`None` in *popular* and *curated* page)|
