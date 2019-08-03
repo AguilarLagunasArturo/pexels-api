@@ -12,11 +12,11 @@ The following code shows you how to import the package and make a simple query t
 # Import API class from pexels_api package
 from pexels_api import API
 # Type your Pexels API
-PEXELS_API_KEY = 'YOUR-PEXELS-API'
+PEXELS_API_KEY = 'YOUR-PEXELS-API-KEY'
 # Create API object
 api = API(PEXELS_API_KEY)
-# Search five images
-api.search('engineer', page=1, results_per_page=5)
+# Search five 'kitten' photos
+api.search('kitten', page=1, results_per_page=5)
 # Get photo entries
 photos = api.get_entries()
 # Loop the five photos
@@ -108,7 +108,7 @@ By default the *[API][7]* properties are `None`. When *[seacrh()][12]*, *[popula
 |total_results|Integer|Number of total results. (`None` in *popular* or *curated* page)|
 |page_results|Integer|Number of results in the current page|  
 |has_next_page|Boolean|`True` if there is a next page else `False`|
-|has_prev_page|Boolean|`True` if there is a previous page else `False`|
+|has_previous_page|Boolean|`True` if there is a previous page else `False`|
 |next_page|String|Url to the next page. (`None` if there is no next page)|
 |prev_page|String|Url to the previous page. (`None` if there is no previous page)|
 

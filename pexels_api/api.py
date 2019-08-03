@@ -18,7 +18,7 @@ class API:
         self.page = None
         self.total_results = None
         self.page_results = None
-        self.has_next_page_page = None
+        self.has_next_page = None
         self.has_previous_page = None
         self.next_page = None
         self.prev_page = None
