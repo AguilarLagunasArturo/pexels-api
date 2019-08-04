@@ -71,7 +71,6 @@ class API:
             self.__update_page_properties()
         except requests.exceptions.RequestException:
             print("Request failed check your internet connection")
-            print("Url: {}".format(url))
             self.request = None
             exit()
     def __update_page_properties(self):

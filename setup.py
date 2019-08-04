@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="pexels-api",
-    version="0.0.3",
+    version="1.0.1",
     author="Arturo Aguilar Lagunas",
     author_email="aguilar.lagunas.arturo@gmail.com",
     description="Use Pexels API v1 with Python",
