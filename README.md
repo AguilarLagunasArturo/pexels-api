@@ -11,16 +11,12 @@ The following code shows you how to import the package and make a simple query t
 ```python
 # Import API class from pexels_api package
 from pexels_api import API
-
 # Type your Pexels API
 PEXELS_API_KEY = 'YOUR-PEXELS-API-KEY'
-
 # Create API object
 api = API(PEXELS_API_KEY)
-
 # Search five 'kitten' photos
 api.search('kitten', page=1, results_per_page=5)
-
 # Get photo entries
 photos = api.get_entries()
 # Loop the five photos
@@ -39,8 +35,6 @@ Specify a query to search photos.
 Search popular photos.
 - *[curated.py:][5]*  
 Search curated photos.
-- *[image-downloader:][6]*  
-Download large amounts of photos via terminal.
 
 ## Documentation:
 - [Usage: pexels_api][6]
@@ -106,7 +100,7 @@ By default the *[API][6]* properties are `None`. When *[seacrh()][11]*, *[popula
 
 |Property|Type|Description|
 |:-|:-|:-|
-|request|[requests][1] object|Current request, `None` if request fails|
+|request|[Object (requests][1])|Current request, `None` if request fails|
 |json|Dictionary|A dictionary with the data of the current page|  
 |page|Integer|Number of the page|  
 |total_results|Integer|Number of total results. (`None` in *popular* and *curated* page)|
