@@ -37,7 +37,6 @@ Search popular photos.
 Search curated photos.
 
 ## Documentation:
-- [Usage: pexels_api][6]
 - [Class: API][6]
     - [Methods][7]
     - [Properties][8]
@@ -100,7 +99,7 @@ By default the *[API][6]* properties are `None`. When *[seacrh()][11]*, *[popula
 
 |Property|Type|Description|
 |:-|:-|:-|
-|request|[Object (requests][1])|Current request, `None` if request fails|
+|request|Object ([requests][1])|Current request, `None` if request fails|
 |json|Dictionary|A dictionary with the data of the current page|  
 |page|Integer|Number of the page|  
 |total_results|Integer|Number of total results. (`None` in *popular* and *curated* page)|
