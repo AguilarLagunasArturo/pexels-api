@@ -1,32 +1,36 @@
 # Using Pexels API v1 with Python
 Use *[pexels_api][2]* to search photos from [Pexels][0].
 ## Dependencies:
-- requests
+- [requests][1]
 
 ## Installation:
 `pip install pexels-api`
 
 ## Usage:
-The following code shows you how to import the package and make a simple query to Pexels API v1. See more [examples][15] or the [documentation][16].
+The following code shows you how to import the package and make a simple query to Pexels API v1. See more [examples][14] or the [documentation][15].
 ```python
 # Import API class from pexels_api package
 from pexels_api import API
+
 # Type your Pexels API
 PEXELS_API_KEY = 'YOUR-PEXELS-API-KEY'
+
 # Create API object
 api = API(PEXELS_API_KEY)
+
 # Search five 'kitten' photos
 api.search('kitten', page=1, results_per_page=5)
+
 # Get photo entries
 photos = api.get_entries()
 # Loop the five photos
 for photo in photos:
   # Print photographer
-  print('Photographer: {}'.format(photo.photographer))
+  print('Photographer: ', photo.photographer)
   # Print url
-  print('Photo url: {}'.format(photo.url))
+  print('Photo url: ', photo.url)
   # Print original size url
-  print('Photo original size: {}'.format(photo.original))
+  print('Photo original size: ', photo.original)
 ```
 ## Examples:
 - *[search.py:][3]*  
@@ -35,26 +39,26 @@ Specify a query to search photos.
 Search popular photos.
 - *[curated.py:][5]*  
 Search curated photos.
-- *[download.py:][6]*  
-Download large amounts of photos with a query.
+- *[image-downloader:][6]*  
+Download large amounts of photos via terminal.
 
 ## Documentation:
-- [Usage: pexels_api][7]
-- [Class: API][7]
-    - [Methods][8]
-    - [Properties][9]
-- [Class: Photo][10]
-    - [Properties][11]
+- [Usage: pexels_api][6]
+- [Class: API][6]
+    - [Methods][7]
+    - [Properties][8]
+- [Class: Photo][9]
+    - [Properties][10]
 
 ## Class: API
 #### `API(PEXELS_API_KEY)`  
-Creates an instance of a *[API][7]* object.
+Creates an instance of a *[API][6]* object.
 
 |Parameter|Required|Type|Description|
 |:-|:-|:-|:-|
 |PEXELS_API_KEY |Yes|String|Your Pexels API key|
 ##### Returns:
-An instance of a *[API][7]* object.
+An instance of a *[API][6]* object.
 ### Methods:
 #### `search(query, photos_per_page=15, page=1)`  
 Given a query requests data using Pexels API v1.
@@ -94,11 +98,11 @@ Search the previous page if available.
 ##### Returns:
 A dictionary containing json data of the previous page, `None` if page not found.
 #### `get_entries()`
-Creates an instance of a *[Photo][10]* object for each photo in the current page.  
+Creates an instance of a *[Photo][9]* object for each photo in the current page.  
 ##### Returns:
-A list of *[Photo][10]* objects.
+A list of *[Photo][9]* objects.
 ### Properties:
-By default the *[API][7]* properties are `None`. When *[seacrh()][12]*, *[popular()][13]* or *[curated()][14]* is performed the *[API][7]* properties are updated.  
+By default the *[API][6]* properties are `None`. When *[seacrh()][11]*, *[popular()][12]* or *[curated()][13]* is performed the *[API][6]* properties are updated.  
 
 |Property|Type|Description|
 |:-|:-|:-|
@@ -119,7 +123,7 @@ By default the *[API][7]* properties are `None`. When *[seacrh()][12]*, *[popula
 |json_photo |Yes|Dictionary|A dictionary containing json data of the photo of which you want the properties|
 
 ##### Returns:
-An instance of a *[Photo][10]* object.
+An instance of a *[Photo][9]* object.
 ### Properties:
 |Property|Type|Description|
 |:-|:-|:-|
@@ -148,14 +152,13 @@ An instance of a *[Photo][10]* object.
 [3]: /examples/search.py                       "Using pexels_api to search photos"
 [4]: /examples/popular.py                      "Using pexels_api to search popular photos"
 [5]: /examples/curated.py                      "Using pexels_api to search curated photos"
-[6]: /examples/download.py                     "Using pexels_api to download large amounts of photos"
-[7]: #class-api                                "Class: API"
-[8]: #methods                                  "API: methods"
-[9]: #properties                               "API: properties"
-[10]: #class-photo                             "Class: Photo"
-[11]: #properties-1                            "Photo: properties"
-[12]: #searchquery-photos_per_page15-page1     "API method: search"
-[13]: #popularphotos_per_page15-page1          "API method: popular"
-[14]: #curatedphotos_per_page15-page1          "API method: curated"
-[15]: #examples                                "More pexels_api examples"
-[16]: #documentation                           "pexels_api documentation"
+[6]: #class-api                                "Class: API"
+[7]: #methods                                  "API: methods"
+[8]: #properties                               "API: properties"
+[9]: #class-photo                             "Class: Photo"
+[10]: #properties-1                            "Photo: properties"
+[11]: #searchquery-photos_per_page15-page1     "API method: search"
+[12]: #popularphotos_per_page15-page1          "API method: popular"
+[13]: #curatedphotos_per_page15-page1          "API method: curated"
+[14]: #examples                                "Examples: pexels_api"
+[15]: #documentation                           "Documentation: pexels_api"
