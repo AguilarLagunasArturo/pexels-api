@@ -15,3 +15,6 @@ class PexelsForbidden(Exception):
 
 class PexelsResouceUnavailable(Exception):
     pass
+
+class PexelsUnkownException(Exception):
+    pass
