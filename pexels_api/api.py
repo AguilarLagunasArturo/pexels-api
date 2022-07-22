@@ -457,3 +457,31 @@ class API:
             self.request = None
             raise PexelsInvalidToken(msg)
 
+    def get_photo_by_id(self, id: str = "") -> Photo:
+        """
+        Get a photo by it's Pexel's Image ID.
+
+        GET https://api.pexels.com/v1/photos/:id
+
+        ID needs to be an integer String.
+
+        :param id: Union[str|int]
+            ID of the image to request.
+
+        see: `"https://www.pexels.com/api/documentation/#photos-show"` for more
+        information.
+        """
+        try:
+            url = "https://api.pexels.com/v1/photos/{}".format(id)
+            self.__request(url)
+            # If there is no json data return None
+            if self.request:
+                return Photo(self.json)
+        except Exception as error:
+            raise PexelsUnkownException(
+                "Unknown Error.\n\t"
+                f"TYPE  : {type(error)}\n\t"
+                f"ERROR : {error}\n\t"
+                f"traceback: {traceback.format_exc()}"
+            )
+        return None
