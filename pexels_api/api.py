@@ -9,6 +9,7 @@
 #     requests
 import requests
 from .tools import Photo
+from .tools import Video
 """ Class """
 class API:
     def __init__(self, PEXELS_API_KEY):
