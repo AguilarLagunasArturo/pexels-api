@@ -74,10 +74,16 @@ class API:
         return None if not self.request else self.json
 
     """ Returns a list of photo objects """
-    def get_entries(self):
+    def get_photo_entries(self):
         if not self.json:
             return None
         return [Photo(json_photo) for json_photo in self.json["photos"]]
+    
+        """ Returns a list of video objects """
+    def get_video_entries(self):
+        if not self.json:
+            return None
+        return [Video(json_video) for json_video in self.json["videos"]]
 
     """ Private methods """
     def __request(self, url):
