@@ -22,7 +22,10 @@ class Photo:
         return self.__photo["url"]
     @property
     def description(self):
-        return self.url.split("/")[-2].replace("-{}".format(self.id), "")
+        return self.__photo["alt"].lower()
+    @property
+    def color(self):
+        return self.photo["avg_color"]
     @property
     def original(self):
         return self.__photo["src"]["original"]
