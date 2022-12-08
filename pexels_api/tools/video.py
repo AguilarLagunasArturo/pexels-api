@@ -1,8 +1,10 @@
-# Author:           Voltaic314
+# Author:           Logan Maupin
 # Pexels Website:   https://www.pexels.com
-## This class is for the sole purpose of parsing json info from Pexels to get video links.
-## Feel free to use this however you want, but I did cut out a lot of other things that you could use maybe if you have other purposes. 
-## for the link on where I got this info, check out the pexels api docs here: https://www.pexels.com/api/documentation/ 
+# class information:
+#     Get json data from https://www.pexels.com
+#     Search videos using Pexels API
+# Dependencies:
+#     requests
 
 class Video:
     def __init__(self, json_video):
