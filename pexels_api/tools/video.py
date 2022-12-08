@@ -31,6 +31,10 @@ class Video:
         return self.__video["url"]
     
     @property
+    def image_preview(self):
+        return self.__video['image']
+    
+    @property
     def description(self):
         return self.url.split("/")[-2].replace(f"-{self.id}", "").replace("-", " "))
     
@@ -56,3 +60,7 @@ class Video:
     @property
     def link(self):
         return self.highest_resolution_video['link']
+
+    @property
+    def extension(self):
+        return self.highest_resolution_video['file_type'].split("/")[-1]
