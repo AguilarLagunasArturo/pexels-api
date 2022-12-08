@@ -1,4 +1,4 @@
-from pexels_api import API
+from venv.pexels_api import API
 import os
 # Init api object with your Pexels API key
 API_KEY = os.environ.get("PEXELS_API_KEY")
