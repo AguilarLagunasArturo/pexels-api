@@ -11,7 +11,7 @@ The following code shows you how to import the package and make a simple query t
 
 ```python
 # Import API class from pexels_api package
-from venv.pexels_api import API
+from pexels_api import API
 
 # Type your Pexels API
 PEXELS_API_KEY = 'YOUR-PEXELS-API-KEY'

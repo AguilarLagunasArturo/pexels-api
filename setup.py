@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="pexels-api-voltaic",
+    name="pexels_api_with_video_searches",
     version="1.0",
     author="Logan Maupin",
     author_email="lmaupin@arizona.edu",
