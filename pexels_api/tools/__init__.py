@@ -1,2 +1,2 @@
-from .tools import Photo
-from .tools import Video
+from .photo import Photo
+from .video import Video

@@ -9,13 +9,14 @@
 # Dependencies:
 #     requests
 import requests
-from .tools import Photo
-from .tools import Video
+from .tools import Photo, Video
 
 """ Class """
+
+
 class API:
     def __init__(self, PEXELS_API_KEY):
-        self.PEXELS_AUTHORIZATION = {"Authorization":PEXELS_API_KEY}
+        self.PEXELS_AUTHORIZATION = {"Authorization": PEXELS_API_KEY}
         self.request = None
         self.json = None
         self.page = None
@@ -27,35 +28,41 @@ class API:
         self.prev_page = None
 
     """ Returns json for the given query """
+
     def search_photo(self, query, results_per_page=15, page=1):
         query = query.replace(" ", "+")
         url = f"https://api.pexels.com/v1/search?query={query}&per_page={results_per_page}&page={page}"
         self.__request(url)
         # If there is no json data return None
         return None if not self.request else self.json
+
     """ Returns json for the given query for videos """
+
     def search_video(self, query, results_per_page=15, page=1):
         query = query.replace(" ", "+")
-        url = f"https://api.pexels.com/videos/searchquery={query}&per_page={results_per_page}&page={page}"
+        url = f"https://api.pexels.com/videos/search?query={query}&per_page={results_per_page}&page={page}"
         self.__request(url)
         # If there is no json data return None
         return None if not self.request else self.json
-        
+
     """ Return json with popular photos of the current page """
-    def popular(self, results_per_page=15, page=1):
+
+    def popular_photo(self, results_per_page=15, page=1):
         url = "https://api.pexels.com/v1/popular?per_page={}&page={}".format(results_per_page, page)
         self.__request(url)
         # If there is no json data return None
         return None if not self.request else self.json
-    
+
     """ Return json with curated photos of the current page """
-    def curated(self, results_per_page=15, page=1):
+
+    def curated_photo(self, results_per_page=15, page=1):
         url = "https://api.pexels.com/v1/curated?per_page={}&page={}".format(results_per_page, page)
         self.__request(url)
         # If there is no json data return None
         return None if not self.request else self.json
-    
+
     """ Returns json of the next page if available """
+
     def search_next_page(self):
         if self.has_next_page:
             self.__request(self.next_page)
@@ -63,8 +70,9 @@ class API:
             return None
         # If there is no json data return None
         return None if not self.request else self.json
-    
+
     """ Returns json of the previous page if available """
+
     def search_previous_page(self):
         if self.has_previous_page:
             self.__request(self.prev_page)
@@ -74,18 +82,21 @@ class API:
         return None if not self.request else self.json
 
     """ Returns a list of photo objects """
+
     def get_photo_entries(self):
         if not self.json:
             return None
         return [Photo(json_photo) for json_photo in self.json["photos"]]
-    
+
         """ Returns a list of video objects """
+
     def get_video_entries(self):
         if not self.json:
             return None
         return [Video(json_video) for json_video in self.json["videos"]]
 
     """ Private methods """
+
     def __request(self, url):
         try:
             self.request = requests.get(url, timeout=15, headers=self.PEXELS_AUTHORIZATION)
@@ -94,6 +105,7 @@ class API:
             print("Request failed check your internet connection")
             self.request = None
             exit()
+
     def __update_page_properties(self):
         if self.request.ok:
             self.json = self.request.json()
@@ -122,7 +134,7 @@ class API:
                 self.prev_page = None
                 self.has_previous_page = False
         else:
-            print("Wrong response you might have a wrong API key")
+            print("Wrong response. You might have a wrong API key")
             print(self.request)
             print("API key: {}".format(self.PEXELS_AUTHORIZATION))
             self.request = None
