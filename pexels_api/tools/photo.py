@@ -22,6 +22,7 @@ class Photo:
         return self.__photo["url"]
     @property
     def description(self):
+        # Make sure alt actually contains text. if it doesn't, which sometimes happens, switch to an alternative method.
         if self.__photo["alt"]:
             return self.__photo["alt"].lower()
         else:
