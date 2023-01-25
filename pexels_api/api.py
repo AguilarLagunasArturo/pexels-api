@@ -23,9 +23,9 @@ class API:
         self.next_page = None
         self.prev_page = None
     """ Returns json for the given query """
-    def search(self, query, results_per_page=15, page=1):
+    def search(self, query, results_per_page=15, page=1, size='large'):
         query = query.replace(" ", "+")
-        url = "https://api.pexels.com/v1/search?query={}&per_page={}&page={}".format(query, results_per_page, page)
+        url = "https://api.pexels.com/v1/search?query={}&per_page={}&page={}&size={}".format(query, results_per_page, page, size)
         self.__request(url)
         # If there is no json data return None
         return None if not self.request else self.json
