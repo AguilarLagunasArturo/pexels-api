@@ -4,7 +4,7 @@ import os
 API_KEY = os.environ.get("PEXELS_API_KEY")
 api = API(API_KEY)
 # Search 'koala' photos
-api.search("koala")
+api.search_photo("koala")
 print("Total results: ", api.total_results)
 # Loop all the pages
 while True:
