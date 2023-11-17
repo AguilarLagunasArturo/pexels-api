@@ -4,7 +4,7 @@ Use *[pexels_api][2]* to search photos from [Pexels][0].
 - [requests][1]
 
 ## Installation:
-`pip install pexels-api`
+`pip install pexels-api-with-video-searches`
 
 ## Usage:
 The following code shows you how to import the package and make a simple query to Pexels API v1. See more [examples][14] or the [documentation][15].
