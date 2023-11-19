@@ -22,7 +22,15 @@ class Photo:
         return self.__photo["url"]
     @property
     def description(self):
-        return self.url.split("/")[-2].replace("-{}".format(self.id), "")
+        # Make sure alt actually contains text. if it doesn't, which sometimes happens, switch to an alternative method.
+        if self.__photo["alt"]:
+            return self.__photo["alt"].lower()
+        else:
+            photo_description_text_in_list_form = self.url.split("/")[-2].replace("-{}".format(self.id), "")
+            return ''.join(photo_description_text_in_list_form).replace("-", " ")
+    @property
+    def color(self):
+        return self.photo["avg_color"]
     @property
     def original(self):
         return self.__photo["src"]["original"]
